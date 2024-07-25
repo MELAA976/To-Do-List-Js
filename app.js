@@ -1,13 +1,9 @@
 // recuperer les element du formulaire 
 //selection de btn
 
-
-
 item = 0
 btnAdd = document.querySelector(".btnAdd"), // btn ajout element
 ulElem = document.querySelector("#ulItem") //mon ul
-console.log(ulElem);
-
 
 // recuperer les elements du formulaire 
 btnAdd.addEventListener("click", ()=> {
@@ -22,8 +18,8 @@ btnAdd.addEventListener("click", ()=> {
 
     //Ajouter un element txt
     liElem.textContent = form.value//du text
-    console.log(form);
     form.value = "" //vider le formulaire
+    console.log(liElem);
 
     //btn supprimer
     let nwBtnSup = document.createElement("button");
@@ -36,7 +32,6 @@ btnAdd.addEventListener("click", ()=> {
         console.log(event.target)//à partir du bouton qu'on récupère ici, on peut remonter au parent
         console.log(nwBtnSup.parentNode);
         nwBtnSup.parentNode.remove()
-        //liElem.remove()
     })
 
     //btn valider
@@ -47,33 +42,42 @@ btnAdd.addEventListener("click", ()=> {
 
     nwBtnVal.addEventListener('click', ()=>{
         console.log(event.target)//à partir du bouton qu'on récupère ici, on peut remonter au parent
-        console.log(nwBtnVal.parentNode);
-        nwBtnVal.parentNode.style.textDecoration = "line-through";
+        console.log(liElem.childNodes[0]);
+        //liElem.childNodes[0].style.textDecoration = "line-through";
+        let task = nwBtnVal.parentNode;
+        task.style.textDecoration = "line-through";
     });
 
     //modifier
     let btnModi = document.createElement("button");
     btnModi.setAttribute("class", "btn btn-outline-primary");
     btnModi.textContent = "Modifier";
-    liElem.appendChild(btnModi)
+    liElem.appendChild(btnModi);
 
+    //boutton modifier
     btnModi.addEventListener('click', () =>{
-        console.log(event.target)
-        console.log(btnModi.parentNode.childNodes);
-        btnModi.remove()
+        console.log(event.target.parentNode);
+        btnModi.style.display = "none";
         let inputChang = document.createElement("input");
         let btnChang = document.createElement("button");
-        btnChang.textContent = "valider";
-        liElem.appendChild(btnChang);
-        liElem.appendChild(inputChang);
+        btnChang.textContent = "Modifier";
+        btnModi.parentNode.appendChild(btnChang);
+        btnModi.parentNode.appendChild(inputChang);
+        
+        //boutton valider modification
         btnChang.addEventListener('click', () =>{
-            console.log("Bonjour");
+            console.log(inputChang.value);
+            btnModi.parentNode.childNodes[0].textContent = inputChang.value;
+            console.log(btnModi);
+            inputChang.style.display = "none";
+            btnChang.style.display = "none";
+            //btnModi.style.display = "inline";
+            //console.log(btnModi.parentNode.childNodes[2]);
+            //btnModi.parentNode.childNodes[3].style.textDecoration = "none";
         }
         )
         
     } )
-
-
 }
 )
 
