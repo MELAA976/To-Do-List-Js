@@ -1,0 +1,26 @@
+body{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont{
+    width: 50%;
+    height: 70vh;
+    background-color: red;
+}
+
+.cont > ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_item{
+    display: flex;
+    width: 30%;
+    padding-top: 20px;
+    
+}
